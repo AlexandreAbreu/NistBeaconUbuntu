@@ -1,0 +1,11 @@
+[Desktop Entry]
+_Name=nist-random-beacon
+Comment=My project description
+Exec=qmlscene $@ share/qml/nist-random-beacon/nist-random-beacon.qml
+Icon=graphics/nist-random-beacon.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+
+
+

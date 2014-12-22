@@ -1,0 +1,15 @@
+{
+    "name": "nist randomness beacon",
+    "description": "NIST Randomness Beacon",
+    "architecture": "@CLICK_ARCH@",
+    "title": "NIST Randomness Beacon",
+    "hooks": {
+        "nist-random-beacon": {
+            "apparmor": "nist-random-beacon.apparmor",
+            "desktop": "nist-random-beacon.desktop"
+        }
+    },
+    "version": "0.1",
+    "maintainer": "Alexandre Abreu <alexandre.abreu@canonical.com>",
+    "framework": "ubuntu-sdk-14.10"
+}
