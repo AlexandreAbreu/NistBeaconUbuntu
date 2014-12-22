@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-22 09:14-0500\n"
+"POT-Creation-Date: 2014-12-22 09:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/alex/dev/my/apps/ubuntu/nist-random-beacon/po/nist-random-beacon.desktop.in.h:1
+#: /home/alex/dev/my/apps/ubuntu/build-nist-random-beacon-Desktop-Default/po/nist-random-beacon.desktop.in.h:1
 #: nist-random-beacon.desktop.in.h:1
 msgid "nist-random-beacon"
 msgstr ""
