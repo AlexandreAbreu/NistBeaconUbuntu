@@ -138,6 +138,28 @@ MainView {
             title: "About"
 
             Page {
+
+                Item {
+                    anchors.fill: parent
+                    anchors.margins: units.gu(4)
+                    width: parent.width
+                    Text {
+                        text: "<html>
+                        In 2013, the NIST decided to start an experiment and started publishing a:
+                        <br>
+                        <ol>
+                         <li> full entropy
+                         <li> signed
+                         <li> 512 bits
+                        </ol>
+                        <br>
+                        value as a beacon every minute of everyday. See: <a href='https://beacon.nist.gov/home' target='_blank'>https://beacon.nist.gov/home</a>
+                        </html>"
+                        anchors.fill: parent
+                        wrapMode: Text.WordWrap
+                        width: parent.width - parent.anchors.margins
+                    }
+                }
             }
         }
     }
