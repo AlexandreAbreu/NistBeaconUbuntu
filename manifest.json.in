@@ -1,8 +1,8 @@
 {
-    "name": "nist randomness beacon",
-    "description": "NIST Randomness Beacon",
+    "name": "com.ubuntu.developer.abreu-alexandre.nistbeacon",
+    "description": "NIST Randomness Beacon Generator",
     "architecture": "@CLICK_ARCH@",
-    "title": "NIST Randomness Beacon",
+    "title": "NIST-Random-Beacon",
     "hooks": {
         "nist-random-beacon": {
             "apparmor": "nist-random-beacon.apparmor",

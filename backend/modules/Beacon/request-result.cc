@@ -97,7 +97,7 @@ RequestResult* RequestResult::fromXmlContent(
             }
           else if (e.tagName() == "frequency")
             {
-              frequency = e.text().toInt();
+              frequency = e.text();
             }
           else if (e.tagName() == "timeStamp")
             {

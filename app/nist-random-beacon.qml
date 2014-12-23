@@ -51,90 +51,94 @@ MainView {
     width: units.gu(100)
     height: units.gu(75)
 
-    Page {
-        title: "NIST Randomness Beacon"
+    Tabs {
+        id: tabs
 
-        Item {
-            anchors.fill: parent
-            anchors.margins: units.gu(4)
-            width: parent.width
-            Column {
-                id: result
-                anchors.fill: parent
-                Text {
-                    id: version
-                    text: ""
-                    wrapMode: Text.Wrap
-                    width: parent.width - parent.anchors.margins
-                }
-                Text {
-                    id: frequency
-                    text: ""
-                    wrapMode: Text.Wrap
-                    width: parent.width - parent.anchors.margins
-                }
-                Text {
-                    id: timestamp
-                    text: ""
-                    wrapMode: Text.Wrap
-                    width: parent.width - parent.anchors.margins
-                }
-                Text {
-                    id: output
-                    text: ""
-                    wrapMode: Text.Wrap
-                    width: parent.width - parent.anchors.margins
-                }
-
-                Rectangle {
-                    border.width: 1
-                    height: 1
-                    color: "black"
+        Tab {
+            title: "Beacon"
+            Page {
+                Item {
+                    anchors.fill: parent
+                    anchors.margins: units.gu(4)
                     width: parent.width
-                    visible: false
+                    Column {
+                        id: result
+                        anchors.fill: parent
+                        Text {
+                            id: version
+                            text: ""
+                            wrapMode: Text.Wrap
+                            width: parent.width - parent.anchors.margins
+                        }
+                        Text {
+                            id: frequency
+                            text: ""
+                            wrapMode: Text.Wrap
+                            width: parent.width - parent.anchors.margins
+                        }
+                        Text {
+                            id: timestamp
+                            text: ""
+                            wrapMode: Text.Wrap
+                            width: parent.width - parent.anchors.margins
+                        }
+                        Text {
+                            id: output
+                            text: ""
+                            wrapMode: Text.Wrap
+                            width: parent.width - parent.anchors.margins
+                        }
 
-                    Behavior on y { SmoothedAnimation { velocity: 200 } }
+                        Rectangle {
+                            border.width: 1
+                            height: 1
+                            color: "black"
+                            width: parent.width
+                            visible: false
+
+                            Behavior on y { SmoothedAnimation { velocity: 200 } }
+                        }
+                    }
                 }
-            }
 
-
-            Button {
-                id: beaconButton
-                text: "Beacon"
-                onClicked: {
-                    beaconButton.enabled = false
-                    request.requestLatestBeacon();
+                NistBeaconRequest {
+                    id: request
+                    onBeaconRequestResult: {
+                        if (status === NistBeaconRequest.RequestSuccess) {
+                            version.text = "Version: " + result.version
+                            frequency.text = "Frequency: " + result.frequency.toString()
+                            var d = new Date(result.timestamp*1000)
+                            timestamp.text = "Timestamp: " + d.toString()
+                            output.text = "Beacon Value: " + result.output
+                        }
+                        lastestBeaconAction.enabled = true
+                    }
                 }
-                gradient: UbuntuColors.greyGradient
-                anchors.centerIn: parent
-                Behavior on y { SmoothedAnimation { velocity: 200 } }
+
+
+                tools: ToolbarItems {
+                    ToolbarButton {
+                        action: Action {
+                            id: lastestBeaconAction
+                            text: "Lastest Beacon"
+                            iconSource: Qt.resolvedUrl("./graphics/reset.svg")
+                            onTriggered: {
+                                lastestBeaconAction.enabled = false
+                                request.requestLatestBeacon();
+                            }
+                        }
+                    }
+                    locked: true
+                    opened: true
+                }
             }
         }
 
-        NistBeaconRequest {
-            id: request
-            onBeaconRequestResult: {
-                if (status === NistBeaconRequest.RequestSuccess) {
-                    version.text = result.version
-                    frequency.text = result.frequency
-                    var d = new Date(result.timestamp*1000)
-                    timestamp.text = d.toString()
-                    output.text = result.output
-                }
-                beaconButton.enabled = true
-            }
-        }
+        Tab {
+            title: "About"
 
-        tools: ToolbarItems {
-            ToolbarButton {
-                action: Action {
-                    text: "About"
-                    iconSource: Qt.resolvedUrl("graphics/toolbarIcon@8.png")
-                    onTriggered: print("About")
-                }
+            Page {
             }
-            locked: true
-            opened: true
         }
     }
 }

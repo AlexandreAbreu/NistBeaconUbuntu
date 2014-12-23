@@ -1,6 +1,6 @@
 [Desktop Entry]
 _Name=nist-random-beacon
-Comment=My project description
+Comment=NIST Random Beacon vizualisation
 Exec=qmlscene $@ share/qml/nist-random-beacon/nist-random-beacon.qml
 Icon=graphics/nist-random-beacon.png
 Terminal=false
